@@ -39,20 +39,20 @@ function evtHandler(num) {
 
             <div className="row">
               <CalcButton value={1} onClick={() => evtHandler(1)}/>
-              <CalcButton value={2}/>
-              <CalcButton value={3}/>
+              <CalcButton value={2} onClick={() => evtHandler(2)}/>
+              <CalcButton value={3} onClick={() => evtHandler(3)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={4}/>
-              <CalcButton value={5}/>
-              <CalcButton value={6}/>
+              <CalcButton value={4} onClick={() => evtHandler(4)}/>
+              <CalcButton value={5} onClick={() => evtHandler(5)}/>
+              <CalcButton value={6} onClick={() => evtHandler(6)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={7}/>
-              <CalcButton value={8}/>
-              <CalcButton value={9}/>
+              <CalcButton value={7} onClick={() => evtHandler(7)}/>
+              <CalcButton value={8} onClick={() => evtHandler(8)}/>
+              <CalcButton value={9} onClick={() => evtHandler(9)}/>
             </div>
 
             <div className="row">
