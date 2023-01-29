@@ -11,12 +11,13 @@ import {changeOperation, applyNumber, clearDisplay} from "../actions/index"
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState); 
 
-function evtHandler(val) {
+function evtHandler(e) {
+  const val = e.target.value;
 
   if(val === "CE") dispatch(clearDisplay());
-  else if(typeof val === "string") dispatch(changeOperation(val));
-  else dispatch(applyNumber(val));
-  
+  else if (parseInt(val)) dispatch(applyNumber(parseInt(val)));
+  else dispatch(changeOperation(val));
+
 }
 
   return (
@@ -42,31 +43,31 @@ function evtHandler(val) {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={() => evtHandler(1)}/>
-              <CalcButton value={2} onClick={() => evtHandler(2)}/>
-              <CalcButton value={3} onClick={() => evtHandler(3)}/>
+              <CalcButton value={1} onClick={e => evtHandler(e)}/>
+              <CalcButton value={2} onClick={e => evtHandler(e)}/>
+              <CalcButton value={3} onClick={e => evtHandler(e)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={4} onClick={() => evtHandler(4)}/>
-              <CalcButton value={5} onClick={() => evtHandler(5)}/>
-              <CalcButton value={6} onClick={() => evtHandler(6)}/>
+              <CalcButton value={4} onClick={e => evtHandler(e)}/>
+              <CalcButton value={5} onClick={e => evtHandler(e)}/>
+              <CalcButton value={6} onClick={e => evtHandler(e)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={7} onClick={() => evtHandler(7)}/>
-              <CalcButton value={8} onClick={() => evtHandler(8)}/>
-              <CalcButton value={9} onClick={() => evtHandler(9)}/>
+              <CalcButton value={7} onClick={e => evtHandler(e)}/>
+              <CalcButton value={8} onClick={e => evtHandler(e)}/>
+              <CalcButton value={9} onClick={e => evtHandler(e)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} onClick={() => evtHandler("+")}/>
-              <CalcButton value={"*"} onClick={() => evtHandler("*")}/>
-              <CalcButton value={"-"} onClick={() => evtHandler("-")}/>
+              <CalcButton value={"+"} onClick={e => evtHandler(e)}/>
+              <CalcButton value={"*"} onClick={e => evtHandler(e)}/>
+              <CalcButton value={"-"} onClick={e => evtHandler(e)}/>
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"} onClick={() => evtHandler("CE")}/>
+              <CalcButton value={"CE"} onClick={e => evtHandler(e)}/>
             </div>
 
           </form>
