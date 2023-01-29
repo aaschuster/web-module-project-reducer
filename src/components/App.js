@@ -5,15 +5,18 @@ import './App.css';
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, {initialState} from '../reducers/index';
-import {changeOperation, applyNumber} from "../actions/index"
+import {changeOperation, applyNumber, clearDisplay} from "../actions/index"
 
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState); 
 
 function evtHandler(val) {
-  if(typeof val === "string") dispatch(changeOperation(val))
+
+  if(val === "CE") dispatch(clearDisplay());
+  else if(typeof val === "string") dispatch(changeOperation(val));
   else dispatch(applyNumber(val));
+  
 }
 
   return (
@@ -63,7 +66,7 @@ function evtHandler(val) {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              <CalcButton value={"CE"} onClick={() => evtHandler("CE")}/>
             </div>
 
           </form>
