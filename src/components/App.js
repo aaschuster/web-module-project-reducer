@@ -12,7 +12,7 @@ function App() {
 const [state, dispatch] = useReducer(reducer, initialState); 
 
 function evtHandler(num) {
-  dispatch(applyNumber(1));
+  dispatch(applyNumber(num));
 }
 
   return (
