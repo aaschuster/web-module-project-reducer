@@ -5,10 +5,15 @@ import './App.css';
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, {initialState} from '../reducers/index';
+import {addOne, applyNumber} from "../actions/index"
 
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState); 
+
+function evtHandler(num) {
+  dispatch(applyNumber(1));
+}
 
   return (
     <div className="App">
@@ -33,7 +38,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
             </div>
 
             <div className="row">
-              <CalcButton value={1}/>
+              <CalcButton value={1} onClick={() => evtHandler(1)}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
