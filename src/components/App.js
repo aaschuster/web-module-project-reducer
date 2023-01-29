@@ -5,14 +5,15 @@ import './App.css';
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, {initialState} from '../reducers/index';
-import {addOne, applyNumber} from "../actions/index"
+import {changeOperation, applyNumber} from "../actions/index"
 
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState); 
 
-function evtHandler(num) {
-  dispatch(applyNumber(num));
+function evtHandler(val) {
+  if(typeof val === "string") dispatch(changeOperation(val))
+  else dispatch(applyNumber(val));
 }
 
   return (
@@ -56,9 +57,9 @@ function evtHandler(num) {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"}/>
-              <CalcButton value={"*"}/>
-              <CalcButton value={"-"}/>
+              <CalcButton value={"+"} onClick={() => evtHandler("+")}/>
+              <CalcButton value={"*"} onClick={() => evtHandler("*")}/>
+              <CalcButton value={"-"} onClick={() => evtHandler("-")}/>
             </div>
 
             <div className="row ce_button">
